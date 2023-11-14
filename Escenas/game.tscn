@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://drk6o66a3e2er"]
+
+[ext_resource type="PackedScene" uid="uid://c272r5kjdjrsr" path="res://Escenas/player.tscn" id="1_nufdr"]
+[ext_resource type="Script" path="res://Escenas/game.gd" id="1_y7ijp"]
+[ext_resource type="Texture2D" uid="uid://b86ym73q811yx" path="res://Mossy Tileset/OIP.jpg" id="2_mev0k"]
+[ext_resource type="PackedScene" uid="uid://d1wuovm0f0usg" path="res://Escenas/spawner.tscn" id="4_4dt5m"]
+[ext_resource type="Script" path="res://Escenas/DeathScreen.gd" id="5_6mu1f"]
+[ext_resource type="AudioStream" uid="uid://bkphtc7hxrc4m" path="res://Assets/Sonidos/Daydream Anatomy - 8-Bit Heroes - 03 Nin10day.mp3" id="6_0rmqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04lud"]
+size = Vector2(210, 11.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr1f5"]
+size = Vector2(13, 157)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_y7ijp")
+
+[node name="Oip" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(105.8, 69.2)
+scale = Vector2(0.452321, 0.422785)
+texture = ExtResource("2_mev0k")
+
+[node name="Player" parent="." instance=ExtResource("1_nufdr")]
+position = Vector2(103, 124)
+
+[node name="Caja" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Caja"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja/StaticBody2D"]
+position = Vector2(109, 141.25)
+shape = SubResource("RectangleShape2D_04lud")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Caja"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja/StaticBody2D4"]
+position = Vector2(107, -1)
+shape = SubResource("RectangleShape2D_04lud")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Caja"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja/StaticBody2D2"]
+position = Vector2(217, 72)
+shape = SubResource("RectangleShape2D_dr1f5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Caja"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja/StaticBody2D3"]
+position = Vector2(-4, 72)
+shape = SubResource("RectangleShape2D_dr1f5")
+
+[node name="Spawner" parent="." instance=ExtResource("4_4dt5m")]
+position = Vector2(104, 53)
+
+[node name="Spawner2" parent="." instance=ExtResource("4_4dt5m")]
+position = Vector2(14, 41)
+
+[node name="Spawner3" parent="." instance=ExtResource("4_4dt5m")]
+position = Vector2(59, 45)
+
+[node name="Spawner4" parent="." instance=ExtResource("4_4dt5m")]
+position = Vector2(180, 34)
+
+[node name="Spawner5" parent="." instance=ExtResource("4_4dt5m")]
+position = Vector2(145, 39)
+
+[node name="Score" type="Label" parent="."]
+texture_filter = 1
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 46.0
+offset_bottom = 34.0
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+offset_left = 132.0
+offset_top = 8.0
+offset_right = 222.0
+offset_bottom = 34.0
+scale = Vector2(0.645522, 1)
+
+[node name="MaxScore" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "MaxScore"
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="DeathScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("5_6mu1f")
+
+[node name="MsgLabel" type="Label" parent="DeathScreen"]
+offset_left = 62.0
+offset_top = 40.0
+offset_right = 149.0
+offset_bottom = 66.0
+size_flags_horizontal = 4
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathScreen"]
+offset_left = 78.0
+offset_top = 57.0
+offset_right = 135.0
+offset_bottom = 97.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+text = "Score:"
+
+[node name="FinalScore" type="Label" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Reiniciar" type="Button" parent="DeathScreen"]
+offset_left = 47.0
+offset_top = 88.0
+offset_right = 166.0
+offset_bottom = 119.0
+scale = Vector2(0.460562, 0.534403)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Jugar Otra Vez"
+
+[node name="Salir" type="Button" parent="DeathScreen"]
+offset_left = 106.0
+offset_top = 88.0
+offset_right = 225.0
+offset_bottom = 119.0
+scale = Vector2(0.460562, 0.534403)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Salir
+"
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0rmqn")
+volume_db = -10.0
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 36.0
+offset_right = 408.0
+offset_bottom = 62.0
+scale = Vector2(0.335979, 0.320496)
+text = "El orden de medicamentos es Blanca , Azul, Roja"
+
+[connection signal="pressed" from="DeathScreen/Reiniciar" to="DeathScreen" method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="DeathScreen/Salir" to="DeathScreen" method="_on_salir_pressed"]

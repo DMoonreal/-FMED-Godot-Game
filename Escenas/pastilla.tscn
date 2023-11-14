@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc4agdjmeqlh4"]
+
+[ext_resource type="Script" path="res://Pastilla.gd" id="1_wsbnn"]
+[ext_resource type="Texture2D" uid="uid://3epf7cl8b8km" path="res://Pill.png" id="2_hjttn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bj4pt"]
+size = Vector2(8, 8)
+
+[node name="Pastilla" type="Area2D"]
+script = ExtResource("1_wsbnn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hjttn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bj4pt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
