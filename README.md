@@ -1,4 +1,4 @@
-# Fmed-Godot: Videojuego De Recordatorio De Medicamentos :fa-list-alt:
+# Fmed-Godot: Videojuego De Recordatorio De Medicamentos :rocket:
 ## Descripción del Proyecto  :fa-headphones:
 FMED-Godot es una aplicación móvil desarrollada con el objetivo de ayudar a las personas a recordar y gestionar la toma de sus medicamentos de manera efectiva y sencilla.
 
